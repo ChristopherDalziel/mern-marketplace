@@ -22,6 +22,10 @@ const ProductSchema = new mongoose.Schema({
     type: String,
     unique: true,
     default: shortid.generate()
+  },
+  imageUrl: {
+    type: String,
+    required: true
   }
 });
 
