@@ -1,6 +1,7 @@
 import axios from 'axios';
 import ProductSummary from '../components/Product/ProductSummary';
 import ProductAttributes from '../components/Product/ProductAttributes';
+import baseUrl from '../utils/baseUrl';
 
 // Creating a dynamic page below. We need to fetch an indivudal product by accessing it's id.
 
@@ -17,7 +18,7 @@ function Product({product}){
 
 // Because we used the ctx object earlier, we can use es6 object destructuring to access the special property 'query', which allows us to destructure one level further.. (_id).
 Product.getInitialProps = async ({query: {_id}}) => {
-  const url = 'http://localhost:3000/api/product';
+  const url = `${baseUrl}/api/product`;
   // adding an object to our payload
   const payload = {params: {_id}}
   const response = await axios.get(url, payload)

@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 
+
 function Home({ products }) {
   console.log(products);
   // React.useEffect(() => {
