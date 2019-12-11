@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Rubix Cube",
+    "price": 10,
+    "inventoryQuantity": 10,
+    "sku": "55"
+  },
+  {
+    "name": "Michelle Wong",
+    "price": 3000.10,
+    "inventoryQuantity": 1,
+    "sku": "10"
+  },
+  {
+    "name": "A Dog",
+    "price": 1000,
+    "inventoryQuantity": 1,
+    "sku": "7"
+  },
+  {
+    "name": "Burger",
+    "price": 15,
+    "inventoryQuantity": 50,
+    "sku": "14"
+  },
+  {
+    "name": "Toast",
+    "price": 10,
+    "inventoryQuantity": 30,
+    "sku": "544"
+  }
+]
