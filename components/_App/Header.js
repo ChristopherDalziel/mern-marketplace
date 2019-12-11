@@ -29,7 +29,7 @@ function Header() {
             size="mini"
             src="/static/logo.svg"
             style={{marginRight: '1em'}} />
-            Marketplace Challenge
+            Mineral Exchange 3.0
         </Menu.Item>
       </Link>
 
