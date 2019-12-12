@@ -1,5 +1,7 @@
 import {Form, Input, TextArea, Button, Image, Message, Header, Icon} from 'semantic-ui-react';
 import React from 'react';
+import axios from 'axios';
+import baseUrl from '../utils/baseUrl';
 
 const INITIAL_PRODUCT = {
   // These fields must match the forms below exactly
@@ -8,7 +10,7 @@ const INITIAL_PRODUCT = {
   media: '',
   description: '',
   inventoryQuantity: ''
-}
+};
 
 // Create of CRUD
 function CreateProudct() {
@@ -33,11 +35,26 @@ function CreateProudct() {
     // console.log(product);
   }};
 
+  // Image hosting function
+  async function handleImageUpload() {
+    const data = new FormData();
+    data.append('file', product.media)
+    data.append('upload_preset', 'mineral-exchange3')
+    data.append('cloud_name', 'acloudname10')
+    const response = await axios.post(process.env.CLOUDINARY_URL, data)
+    const mediaUrl = response.data.url
+    return mediaUrl;
+  }
+
   // Create the submission rules
-  function handleSubmit(event){
+  async function handleSubmit(event){
     // Prevent the default of the page refreshing upon clicking the submit button 
     event.preventDefault();
-    console.log(product)
+    const mediaUrl = await handleImageUpload()
+    const url = `${baseUrl}/api/product`
+    // ...spreads in all of the product data, instead we could write product = {name, price, description} and destructure that way.
+    const payload = {...product, mediaUrl}
+    await axios.post(url, payload);
     // Resetting our form back to default(empty) on submit
     setProduct(INITIAL_PRODUCT);
     // Upon succesful submission change success to true
