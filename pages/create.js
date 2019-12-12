@@ -7,7 +7,7 @@ const INITIAL_PRODUCT = {
   // These fields must match the forms below exactly
   name: '',
   price: '',
-  media: '',
+  image: '',
   description: '',
   inventoryQuantity: ''
 };
@@ -16,20 +16,21 @@ const INITIAL_PRODUCT = {
 function CreateProudct() {
   // React hook always goes first?
   const [product, setProduct] = React.useState(INITIAL_PRODUCT);
-  // Creating the media/image preview below the image upload once you've added it
-  const [mediaPreview, setMediaPreview] = React.useState('')
+  // Creating the Image preview below the image upload once you've added it
+  const [imagePreview, setImagePreview] = React.useState('')
   // Creating the success message that is activated inside the form upon a succesful submission. Set false.
   const [success, setSuccess] = React.useState(false);
+  const [loading, setLoading] = React.useState(false);
 
   // onChange/handleChange Function
   function handleChange(event) {
     const {name, value, files} = event.target
-    // For Media/Image
-    if(name === 'media') {
-      setProduct((prevState) => ({...prevState, media: files[0]}));
-      setMediaPreview(window.URL.createObjectURL(files[0]))
+    // For Image
+    if(name === 'image') {
+      setProduct((prevState) => ({...prevState, image: files[0]}));
+      setImagePreview(window.URL.createObjectURL(files[0]))
     } else {
-    // Everything else other than images or media - Inside the square brackets is a "computed property"
+    // Everything else other than image - Inside the square brackets is a "computed property"
     setProduct(prevState => ({...prevState, [name]: value}));
     // Prints the changes to the console
     // console.log(product);
@@ -38,23 +39,25 @@ function CreateProudct() {
   // Image hosting function
   async function handleImageUpload() {
     const data = new FormData();
-    data.append('file', product.media)
+    data.append('file', product.image)
     data.append('upload_preset', 'mineral-exchange3')
     data.append('cloud_name', 'acloudname10')
     const response = await axios.post(process.env.CLOUDINARY_URL, data)
-    const mediaUrl = response.data.url
-    return mediaUrl;
+    const imageUrl = response.data.url
+    return imageUrl;
   }
 
   // Create the submission rules
   async function handleSubmit(event){
     // Prevent the default of the page refreshing upon clicking the submit button 
     event.preventDefault();
-    const mediaUrl = await handleImageUpload()
+    setLoading(true)
+    const imageUrl = await handleImageUpload()
     const url = `${baseUrl}/api/product`
     // ...spreads in all of the product data, instead we could write product = {name, price, description} and destructure that way.
-    const payload = {...product, mediaUrl}
+    const payload = {...product, imageUrl}
     await axios.post(url, payload);
+    setLoading(false)
     // Resetting our form back to default(empty) on submit
     setProduct(INITIAL_PRODUCT);
     // Upon succesful submission change success to true
@@ -67,7 +70,7 @@ function CreateProudct() {
         <Icon name="add" color="orange" />
         Create New Product
       </Header>
-      <Form success={success} onSubmit={handleSubmit}>
+      <Form loading={loading} success={success} onSubmit={handleSubmit}>
         <Message 
           success
           icon="check"
@@ -96,7 +99,7 @@ function CreateProudct() {
               />
               <Form.Field
               control={Input}
-              name="qty"
+              name="inventoryQuantity"
               label="Inventory Quantity"
               placeholder="Inventory Quantity"
               minimum="1"
@@ -107,14 +110,14 @@ function CreateProudct() {
               </Form.Group>
               <Form.Field
               control={Input}
-              name="media"
+              name="image"
               type="file"
               label="Image"
               accept="image/*"
               content="Select Image"
               onChange={handleChange}
               />
-              <Image src={mediaPreview} rounded centered size="small" />
+              <Image src={imagePreview} rounded centered size="small" />
               <Form.Field
                 control={TextArea}
                 name="description"
@@ -125,6 +128,7 @@ function CreateProudct() {
               />
               <Form.Field
                 control={Button}
+                disabled={loading}
                 color="blue"
                 icon="pencil alternate"
                 content="Submit"

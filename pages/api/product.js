@@ -1,4 +1,7 @@
 import Product from '../../models/Product';
+import connectDb from "../../utils/connectDb";
+
+connectDb();
 
 export default async (req, res) => {
   switch(req.method){
@@ -25,14 +28,15 @@ async function handleGetRequest(req, res) {
 }
 
 async function handlePostRequest(req, res) {
-  const {name, price, description, mediaUrl} = req.body
-  if(!name || !price || !description || !mediaUrl) {
+  const {name, price, inventoryQuantity, description, imageUrl} = req.body
+  if(!name || !price || !inventoryQuantity || !description || !imageUrl) {
     // 422 Error
     return res.status(422).send("Product missing 1 or more fields")
   }
   const product = await new Product({
     name,
     price,
+    inventoryQuantity,
     description,
     imageUrl
   }).save()

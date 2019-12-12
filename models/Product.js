@@ -14,6 +14,10 @@ const ProductSchema = new mongoose.Schema({
     type: Number,
     required: true
   },
+  description: {
+    type: String,
+    required: true
+  },
   inventoryQuantity: {
     type: Number,
     required: true
@@ -21,7 +25,7 @@ const ProductSchema = new mongoose.Schema({
   sku: {
     type: String,
     unique: true,
-    default: shortid.generate()
+    default: shortid.generate
   },
   imageUrl: {
     type: String,
