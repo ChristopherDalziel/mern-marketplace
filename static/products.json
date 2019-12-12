@@ -3,7 +3,7 @@
     "name": "Sapphire",
     "price": 1000,
     "inventoryQuantity": 10,
-    "description": ""
+    "description": "Clear polished blue, perfect tear drop shape",
     "sku": "01-02-03",
     "imageUrl": "https://1a00ef-mineralexchange.s3.ap-southeast-2.amazonaws.com/NGQs6FYo8BZ8bnG62qhc63Jv?response-content-disposition=inline%3B%20filename%3D%22170px-Geschliffener_blauer_Saphir.jpg%22%3B%20filename%2A%3DUTF-8%27%27170px-Geschliffener_blauer_Saphir.jpg&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVUYADC4TGLZUZ3GM%2F20191211%2Fap-southeast-2%2Fs3%2Faws4_request&X-Amz-Date=20191211T080606Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=16d82c847b0a2cd467dd1b70de0595c105d4d457143010b1c5dba91f4878dfb9"
   },
@@ -11,6 +11,7 @@
     "name": "Emerald",
     "price": 400,
     "inventoryQuantity": 1,
+    "description": "Clear shiny, polished Emerald.",
     "sku": "01-02-04",
     "imageUrl": "https://limitless-earth-36988.herokuapp.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--123dc1572e8809317bcef2976b92d83f75bb4e26/emerald.png"
   },
@@ -18,6 +19,7 @@
     "name": "Ruby on Rails",
     "price": 1,
     "inventoryQuantity": 1000,
+    "description": "Such a bright red, it hurts your eyes! ~Magic",
     "sku": "11-22-33",
     "imageUrl": "https://limitless-earth-36988.herokuapp.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4f2484df7a57bc896fc4b1341d243c57bd2357d4/1_Qc0XxYm-qAZL-7tjjlNfrg.png"
   },
@@ -25,6 +27,7 @@
     "name": "Quartzite",
     "price": 45,
     "inventoryQuantity": 50,
+    "description": "A small sample of a pure quartz crystal with a small amount of extra rock left over for display purposes.",
     "sku": "22-33-44",
     "imageUrl": "https://limitless-earth-36988.herokuapp.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBEZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--824c1a1243bc5c99f153691505b5bc530b52b34f/Quartz3_crystal_71173609.jpg"
   },
@@ -32,6 +35,7 @@
     "name": "Tiger Eye",
     "price": 225,
     "inventoryQuantity": 255,
+    "description": "Perfectly polished Tigers Eye gem, perfectly symmetrical. Awesome contrast between colours.",
     "sku": "04-02-05",
     "imageUrl": "https://limitless-earth-36988.herokuapp.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBEUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d626f6a54ce035bf19c6014820ad798aba5e386c/Tiger-Eye-e1496813047286.jpg"
   }
