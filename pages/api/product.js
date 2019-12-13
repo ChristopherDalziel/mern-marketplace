@@ -29,18 +29,24 @@ async function handleGetRequest(req, res) {
 
 async function handlePostRequest(req, res) {
   const {name, price, inventoryQuantity, description, imageUrl} = req.body
-  if(!name || !price || !inventoryQuantity || !description || !imageUrl) {
-    // 422 Error
-    return res.status(422).send("Product missing 1 or more fields")
+  try {
+    if(!name || !price || !inventoryQuantity || !description || !imageUrl) {
+      // Handling user created errors - 422 Error
+      return res.status(422).send("Product missing 1 or more fields")
+    }
+    const product = await new Product({
+      name,
+      price,
+      inventoryQuantity,
+      description,
+      imageUrl
+    }).save()
+    res.status(201).json(product)
+  } catch(error){
+    // Sever errors are numbers in 500. We should still display information on the error to the user
+    console.error(error);
+    res.status(500).send("Sever error while creating product")
   }
-  const product = await new Product({
-    name,
-    price,
-    inventoryQuantity,
-    description,
-    imageUrl
-  }).save()
-  res.status(201).json(product)
 }
 
 async function handleDeleteRequest(req, res){

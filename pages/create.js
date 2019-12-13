@@ -2,6 +2,7 @@ import {Form, Input, TextArea, Button, Image, Message, Header, Icon} from 'seman
 import React from 'react';
 import axios from 'axios';
 import baseUrl from '../utils/baseUrl';
+import catchErrors from '../utils/catchErrors'
 
 const INITIAL_PRODUCT = {
   // These fields must match the forms below exactly
@@ -20,7 +21,16 @@ function CreateProudct() {
   const [imagePreview, setImagePreview] = React.useState('')
   // Creating the success message that is activated inside the form upon a succesful submission. Set false.
   const [success, setSuccess] = React.useState(false);
+  // Creating the loading spinner upon submission
   const [loading, setLoading] = React.useState(false);
+  // Error handling un-entered fields to display outside of the console
+  const [disabled, setupDisabled] = React.useState(true);
+  const [error, setError] = React.useState("")
+  
+  React.useEffect(() => {
+    const isProduct = Object.values(product).every(el => Boolean (el))
+    isProduct? setupDisabled(false) : setupDisabled(true)
+  }, [product])
 
   // onChange/handleChange Function
   function handleChange(event) {
@@ -49,19 +59,28 @@ function CreateProudct() {
 
   // Create the submission rules
   async function handleSubmit(event){
-    // Prevent the default of the page refreshing upon clicking the submit button 
-    event.preventDefault();
-    setLoading(true)
-    const imageUrl = await handleImageUpload()
-    const url = `${baseUrl}/api/product`
-    // ...spreads in all of the product data, instead we could write product = {name, price, description} and destructure that way.
-    const payload = {...product, imageUrl}
-    await axios.post(url, payload);
-    setLoading(false)
-    // Resetting our form back to default(empty) on submit
-    setProduct(INITIAL_PRODUCT);
-    // Upon succesful submission change success to true
-    setSuccess(true);
+    try {
+      // Prevent the default of the page refreshing upon clicking the submit button 
+      event.preventDefault();
+      setLoading(true)
+      const imageUrl = await handleImageUpload()
+      const url = `${baseUrl}/api/product`
+      // ...spreads in all of the product data, instead we could write product = {name, price, description} and destructure that way.
+      const payload = {...product, imageUrl}
+      // Do not NEED to below, is been used for testing:
+      // const {name, price, description} = product
+      // const payload = { name: "", price, description, imageUrl}
+      await axios.post(url, payload);
+      // Resetting our form back to default(empty) on submit
+      setProduct(INITIAL_PRODUCT);
+      // Upon succesful submission change success to true
+      setSuccess(true);
+    } catch(error){
+      catchErrors(error, setError)
+    } finally {
+      setLoading(false)
+    }
+    
   }
 
   return (
@@ -70,7 +89,12 @@ function CreateProudct() {
         <Icon name="add" color="orange" />
         Create New Product
       </Header>
-      <Form loading={loading} success={success} onSubmit={handleSubmit}>
+      <Form loading={loading} error={Boolean(error)} success={success} onSubmit={handleSubmit}>
+        <Message
+          error
+          header="Oops!"
+          content={error}
+        />
         <Message 
           success
           icon="check"
@@ -128,7 +152,7 @@ function CreateProudct() {
               />
               <Form.Field
                 control={Button}
-                disabled={loading}
+                disabled={disabled || loading}
                 color="blue"
                 icon="pencil alternate"
                 content="Submit"
