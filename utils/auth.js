@@ -17,5 +17,7 @@ export function redirectUser(ctx, location) {
 
 export function handleLogout(){
   cookie.remove('token');
+  // When we logout we're going send a notice to local storage so we log out in all windows, not just the current one, further code in _app
+  window.localStorage.setItem('logout', Date.now());
   Router.push('/login');
 }
