@@ -6,8 +6,9 @@ import baseUrl from "../utils/baseUrl";
 function Product({ product, user }) {
   return (
     <>
-      <ProductSummary {...product} />
-      <ProductAttributes user ={user}{...product} />
+    {/* If user is NOT in both of these the cart doesn't work - this caused me 2 hours + worth of errors */}
+      <ProductSummary user={user} {...product} />
+      <ProductAttributes user={user} {...product} />
     </>
   );
 }
