@@ -2,6 +2,7 @@ import React from 'react';
 import {Button, Form, Icon, Message, Segment} from 'semantic-ui-react';
 import Link from 'next/link';
 import catchErrors from '../utils/catchErrors';
+import Axios from 'axios';
 
 // Creating the base user
 const INITAL_USER = {
@@ -36,7 +37,9 @@ function Signup() {
     try {
       setLoading(true)
       setError('');
-      console.log(user)
+      const url = `#{baseUrl}/api/signup`
+      const payload = {...user}
+      await axios.post(url, payload)
       // Make request to sign up user
     } catch(error){
       catchErrors(error, setError);

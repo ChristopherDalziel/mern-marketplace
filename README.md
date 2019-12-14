@@ -12,5 +12,7 @@
 - NextJS
 - JMT
 - CLOUDINARY (Image Hosting)
+
+### Run localhost
 - npm run dev
 
