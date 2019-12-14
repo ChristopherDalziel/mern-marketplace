@@ -1,6 +1,6 @@
 import App from "next/app";
 import Layout from "../components/_App/Layout";
-import { parseCookies } from "nookies";
+import { parseCookies, destroyCookie } from "nookies";
 import { redirectUser } from "../utils/auth";
 import baseUrl from "../utils/baseUrl";
 import axios from "axios";
@@ -30,6 +30,11 @@ class MyApp extends App {
         pageProps.user = user;
       } catch (error) {
         console.error("Error getting current user", error);
+        // What if the token/cookie gets corrupted? Data is changed without the user doing so, or something? We need to destroy the cookie immediately and redirect them off the current page incase something malicious is trying to get into their account info.
+        // 1. Throw out invalid token
+        destroyCookie(ctx, "token");
+        // 2. Redirect to login page
+        redirectUser(ctx, "/login");
       }
     }
 

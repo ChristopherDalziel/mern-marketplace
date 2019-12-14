@@ -11,7 +11,6 @@ Router.onRouteChangeComplete = () => NProgress.done();
 Router.onRouteChangeError = () => NProgress.done();
 
 function Header({user}) {
-  console.log(user);
   const router = useRouter();
   // const user = false; < This was a hard-coded user variable for our headers
 
