@@ -6,7 +6,7 @@ const {String} = mongoose.Schema.Types;
 
 // When you specify the model name in ths instance "user" the collection that is created (On MongoDB Atlas) is plural.
 
-const userSchema = new mongoose.Schema({
+const UserSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true
@@ -34,7 +34,7 @@ const userSchema = new mongoose.Schema({
 })
 
 // Export the user, if it already existrs OR create it
-export default mongoose.models.user || mongoose.model("User")
+export default mongoose.models.User || mongoose.model("User", UserSchema)
 
 // User - Will be given a cart and can check out products
 // Admin - Will have user access + the ability to create and delete products

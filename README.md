@@ -10,7 +10,7 @@
 - MongoDB Atlas
 - Semantic-UI (React)
 - NextJS
-- JMT
+- JMT / Cookie creation
 - CLOUDINARY (Image Hosting)
 
 ### Run localhost
