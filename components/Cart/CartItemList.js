@@ -1,4 +1,4 @@
-import { Header, Segment, Button, Icon } from "semantic-ui-react";
+import {Header, Segment, Button, Icon} from "semantic-ui-react";
 
 function CartItemList() {
   // Setting user signed in to false by default

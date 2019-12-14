@@ -1,4 +1,4 @@
-import { Button, Segment, Divider } from "semantic-ui-react";
+import {Button, Segment, Divider} from "semantic-ui-react";
 
 function CartSummary() {
   return (

@@ -62,6 +62,7 @@ function CreateProudct() {
     try {
       // Prevent the default of the page refreshing upon clicking the submit button 
       event.preventDefault();
+      setError('')
       setLoading(true)
       const imageUrl = await handleImageUpload()
       const url = `${baseUrl}/api/product`
