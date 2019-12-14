@@ -1,10 +1,16 @@
-import cookie from 'js-cookie';
-import Router from 'next/router';
-
-// Creating our cookie
+import cookie from "js-cookie";
+import Router from "next/router";
 
 export function handleLogin(token) {
-  // (name, value)
-  cookie.set('token', token)
-  Router.push('/account')
+  cookie.set("token", token);
+  Router.push("/account");
+}
+
+export function redirectUser(ctx, location) {
+  if (ctx.req) {
+    ctx.res.writeHead(302, { Location: location });
+    ctx.res.end();
+  } else {
+    Router.push(location);
+  }
 }

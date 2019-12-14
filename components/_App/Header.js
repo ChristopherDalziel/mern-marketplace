@@ -10,9 +10,10 @@ Router.onRouteChangeStart = () => NProgress.start();
 Router.onRouteChangeComplete = () => NProgress.done();
 Router.onRouteChangeError = () => NProgress.done();
 
-function Header() {
+function Header({user}) {
+  console.log(user);
   const router = useRouter();
-  const user = false;
+  // const user = false; < This was a hard-coded user variable for our headers
 
   // Creating Active Route data, so you can see within the URL where you're located once we've created an active app.
   function isActive(route){
