@@ -4,6 +4,7 @@ import { Menu, Container, Icon, Image } from 'semantic-ui-react';
 import Link from 'next/link';
 import Router, { useRouter } from 'next/router';
 import NProgress from 'nprogress';
+import {handleLogout} from '../../utils/auth'
 
 // Creating the rules for our load/progress bar
 Router.onRouteChangeStart = () => NProgress.start();
@@ -12,6 +13,9 @@ Router.onRouteChangeError = () => NProgress.done();
 
 function Header({user}) {
   const router = useRouter();
+  const isRoot = user && user.role === 'root';
+  const isAdmin = user && user.role === 'admin';
+  const isRootOrAdmin = isRoot || isAdmin;
   // const user = false; < This was a hard-coded user variable for our headers
 
   // Creating Active Route data, so you can see within the URL where you're located once we've created an active app.
@@ -42,8 +46,8 @@ function Header({user}) {
         </Menu.Item>
       </Link>
 
-      {/* If user is true */}
-      {user && 
+      {/* Only if the user is 'root' or 'admin show this button */}
+      {isRootOrAdmin && 
       <Link href="/create">
         <Menu.Item header active={isActive('/create')}>
           <Icon
@@ -64,7 +68,7 @@ function Header({user}) {
         </Menu.Item>
       </Link>
 
-      <Menu.Item header>
+      <Menu.Item onClick={handleLogout} header>
         <Icon
           name="sign out"
           size="large" />

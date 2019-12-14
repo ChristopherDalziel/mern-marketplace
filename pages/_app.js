@@ -15,6 +15,7 @@ class MyApp extends App {
       pageProps = await Component.getInitialProps(ctx);
     }
 
+    // Making sure unauthenticated users/users who do not have a token cannot access the /account or /create routes.
     if (!token) {
       const isProtectedRoute =
         ctx.pathname === "/account" || ctx.pathname === "/create";
@@ -27,6 +28,16 @@ class MyApp extends App {
         const url = `${baseUrl}/api/account`;
         const response = await axios.get(url, payload);
         const user = response.data;
+        // confirming the accessing users role so we can further authenticate their paths throughout the website
+        const isRoot = user.role === 'root';
+        const isAdmin = user.role === 'admin';
+        // If authenticated but not of role admin or root, redirect from the create page.
+        // We can do this in a shorter syntax by just confirming they're a user, however this is more explicit.
+        const isNotPermitted = !(isRoot || isAdmin) && ctx.pathname === '/create';
+        if(isNotPermitted){
+          // If user is not permitted redirect them to the homepage
+          redirectUser(ctx, '/')
+        }
         pageProps.user = user;
       } catch (error) {
         console.error("Error getting current user", error);
@@ -37,7 +48,6 @@ class MyApp extends App {
         redirectUser(ctx, "/login");
       }
     }
-
     return { pageProps };
   }
 
