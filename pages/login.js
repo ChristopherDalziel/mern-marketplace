@@ -4,6 +4,7 @@ import Link from 'next/link';
 import catchErrors from '../utils/catchErrors';
 import axios from 'axios';
 import baseUrl from '../utils/baseUrl';
+import {handleLogin} from '../utils/auth';
 
 // Creating the base user
 const INITAL_USER = {
@@ -37,13 +38,15 @@ function Signup() {
     try {
       setLoading(true)
       setError('');
-      console.log(user)
+      const url = `${baseUrl}/api/login`
+      const payload = {...user}
+      const response = await axios.post(url, payload)
+      handleLogin(response.data)
       // Make request to sign up user
     } catch(error){
       catchErrors(error, setError);
     } finally {
       setLoading(false);
-
     }
   }
 
