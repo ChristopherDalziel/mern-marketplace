@@ -1,8 +1,9 @@
 import {Button, Segment, Divider} from "semantic-ui-react";
 import React from 'react';
+import StripeCheckout from 'react-stripe-checkout';
 import calculateCartTotal from '../../utils/calculateCartTotal';
 
-function CartSummary({products}) {
+function CartSummary({products, handleCheckout, success}) {
   const [cartAmount, setCartAmount] = React.useState(0)
   const [stripeAmount, setStripeAmount] = React.useState(0)
   // Creating to React compontent to disable checkout button
@@ -22,7 +23,27 @@ function CartSummary({products}) {
       <Divider />
       <Segment clearing size="large">
         <strong>Sub total:</strong> ${cartAmount}
-        <Button disabled={isCartEmpty} icon="cart" color="teal" floated="right" content="Checkout" />
+        <StripeCheckout 
+          name="Mineral Exchange" 
+          amount={stripeAmount} 
+          // Display an image of the first item in the users cart if there is no item, or no image display an empty string
+          image={products.length > 0 ? products[0].product.imageUrl : '' }
+          currency="AUD"
+          shippingAddress={true}
+          billingAddress={true}
+          stripeKey="pk_test_hm0vlOj40pdRULjRwvM2C88F00bVGxANtZ"
+          zipCode={true}
+          token={handleCheckout}
+          // When a user clicks on this button, all the above information will be displayed
+          triggerEvent="onClick" >
+
+          <Button 
+            // Disable if the cart is empty or if a successfuly payment has been made
+            disabled={isCartEmpty || success} 
+            icon="cart" color="teal" 
+            floated="right" 
+            content="Checkout" />
+        </StripeCheckout>
       </Segment>
     </>
   );

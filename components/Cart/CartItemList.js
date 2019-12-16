@@ -1,7 +1,7 @@
-import {Header, Segment, Button, Icon, Item} from "semantic-ui-react";
+import {Header, Segment, Button, Icon, Item, Message} from "semantic-ui-react";
 import {useRouter} from 'next/router';
 
-function CartItemList({products, user, handleRemoveFromCart}){
+function CartItemList({products, user, handleRemoveFromCart, success}){
   const router = useRouter()
 
   // How we are displaying our cart items to the user
@@ -26,6 +26,18 @@ function CartItemList({products, user, handleRemoveFromCart}){
       )
     }));
   }
+
+  // Display upon a successful payment
+  if(success){
+    return(
+      <Message 
+        success
+        header="Success!"
+        content="Your order and payment has been accepted"
+        icon="star outline" />
+    )
+  }
+
   // What we are showing if there are no products in the cart array
   if(products.length === 0) {
     return (

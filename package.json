@@ -27,7 +27,7 @@
     "react-stripe-checkout": "^2.6.3",
     "semantic-ui-react": "^0.87.3",
     "shortid": "^2.2.15",
-    "stripe": "^7.5.0",
+    "stripe": "^7.14.0",
     "uuid": "^3.3.3",
     "validator": "^11.1.0"
   },
