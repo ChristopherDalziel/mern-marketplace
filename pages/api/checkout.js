@@ -61,7 +61,7 @@ export default async (req, res) => {
     await Cart.findOneAndUpdate(
       { _id: cart._id}, 
       // Setting products to an emtpy array
-      { $set: {products: [ ]}}
+      { $set: { products: [] }}
     )
     // 9. Send back succes (200) response
     res.status(200).send("Checkout successful!")
