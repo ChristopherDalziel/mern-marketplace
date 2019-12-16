@@ -1,11 +1,11 @@
 [
   {
-    "name": "Sapphire",
+    "name": "SF",
     "price": 1000,
     "inventoryQuantity": 10,
     "description": "Clear polished blue, perfect tear drop shape",
     "sku": "01-02-03",
-    "imageUrl": "https://1a00ef-mineralexchange.s3.ap-southeast-2.amazonaws.com/NGQs6FYo8BZ8bnG62qhc63Jv?response-content-disposition=inline%3B%20filename%3D%22170px-Geschliffener_blauer_Saphir.jpg%22%3B%20filename%2A%3DUTF-8%27%27170px-Geschliffener_blauer_Saphir.jpg&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVUYADC4TGLZUZ3GM%2F20191211%2Fap-southeast-2%2Fs3%2Faws4_request&X-Amz-Date=20191211T080606Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=16d82c847b0a2cd467dd1b70de0595c105d4d457143010b1c5dba91f4878dfb9"
+    "imageUrl": "http://www.imagebam.com/remove/1327955867/b5cfee664dd4f0eb17a8198df413e470"
   },
   {
     "name": "Emerald",

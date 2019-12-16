@@ -18,7 +18,7 @@ Home.getInitialProps = async ctx => {
   // Ternary that checks if there is a query string in our URL, if there is not.. go to page 1
   const page = ctx.query.page ? ctx.query.page : "1";
   // Restriction on amount of items per page
-  const size = 1;
+  const size = 3;
   const url = `${baseUrl}/api/products`;
   const payload = {params: {page, size}}
   // fetch data on server
