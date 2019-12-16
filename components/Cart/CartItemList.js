@@ -21,10 +21,10 @@ function CartItemList({products, user, handleRemoveFromCart}){
           basic
           icon='remove'
           floated="right"
-          onClick={() => router.push(handleRemoveFromCart(p.product._id))}
+          onClick={() => handleRemoveFromCart(p.product._id)}
         />
       )
-    }))
+    }));
   }
   // What we are showing if there are no products in the cart array
   if(products.length === 0) {

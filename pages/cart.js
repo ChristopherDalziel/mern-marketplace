@@ -11,7 +11,7 @@ function Cart({ products, user }) {
   // Allowing us to update the 'state' of our cart 
   const [cartProducts, setCartProducts] = React.useState(products)
 
-  async function removeFromCart(productId) {
+  async function handleRemoveFromCart(productId) {
     const url = `${baseUrl}/api/cart`;
     const token = cookie.get('token')
     const payload = {
