@@ -12,7 +12,7 @@
 - NextJS
 - JMT / Cookie creation
 - CLOUDINARY (Image Hosting)
+- Stripe (Payment System)
 
 ### Run localhost
 - npm run dev
-
