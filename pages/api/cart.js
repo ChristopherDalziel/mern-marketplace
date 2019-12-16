@@ -89,8 +89,17 @@ async function handleDeleteRequest(req, res) {
     return res.status(401).send("No authorization token");
   }
   try {
-
+    const { userId } = jwt.verify(
+      req.headers.authorization,
+      process.env.JWT_SECRET
+    );
+    await findOneAndUpdate(
+      {user: userId},
+      // $pull allows us to pull our products from our array
+      {$pull: {products: productId}}
+    )
   } catch (error) {
-
+    console.error(error);
+    res.status(403).send("Please login again"); 
   }
 }

@@ -20,6 +20,7 @@ const INITIAL_PRODUCT = {
   description: ""
 };
 
+// Writing React.useState this way is apart of using ReactHooks - Ryan Bigg
 function CreateProduct() {
   const [product, setProduct] = React.useState(INITIAL_PRODUCT);
   const [mediaPreview, setMediaPreview] = React.useState("");
