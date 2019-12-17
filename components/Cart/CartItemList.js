@@ -41,7 +41,7 @@ function CartItemList({products, user, handleRemoveFromCart, success}){
   // What we are showing if there are no products in the cart array
   if(products.length === 0) {
     return (
-      <Segment secondary color="black" inverted textAlign="center" placeholder>
+      <Segment secondary color="teal" inverted textAlign="center" placeholder>
         <Header icon>
           <Icon name="shopping basket" />
           No products in your cart. Add some!

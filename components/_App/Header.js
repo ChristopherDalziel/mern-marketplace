@@ -4,7 +4,7 @@ import { Menu, Container, Icon, Image } from 'semantic-ui-react';
 import Link from 'next/link';
 import Router, { useRouter } from 'next/router';
 import NProgress from 'nprogress';
-import {handleLogout} from '../../utils/auth'
+import {handleLogout} from '../../utils/auth';
 
 // Creating the rules for our load/progress bar
 Router.onRouteChangeStart = () => NProgress.start();
@@ -33,7 +33,7 @@ function Header({user}) {
             size="mini"
             src="/static/logo.svg"
             style={{marginRight: '1em'}} />
-            Mineral Exchange 3.0
+            The Rock Shop
         </Menu.Item>
       </Link>
 

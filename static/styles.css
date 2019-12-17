@@ -1,3 +1,7 @@
 /* .ui {
   justify-content: space-between ;
 } */
+
+:root {
+  --progressBar:teal;
+}

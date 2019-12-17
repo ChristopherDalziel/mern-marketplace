@@ -6,7 +6,7 @@ function AccountHeader({email, name, createdAt, role}) {
   return (
     <Segment secondary inverted color="teal">
       <Label
-        color="teal"
+        color="red"
         size="large"
         ribbon
         icon="privacy"

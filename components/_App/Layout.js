@@ -16,7 +16,7 @@ function Layout({ children, user }) {
           rel="stylesheet"
           href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/semantic.min.css"
         />
-        <title>ReactReserve</title>
+        <title>The Rock Shop</title>
       </Head>
       {/* Passing 'user' data to our Header component */}
       <Header user={user} />
