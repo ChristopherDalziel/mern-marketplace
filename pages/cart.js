@@ -53,13 +53,13 @@ function Cart({ products, user }) {
         handleRemoveFromCart={handleRemoveFromCart} 
         user={user} 
         products={cartProducts} 
-        success={success} />
-
+        success={success} 
+      />
       <CartSummary 
         products={cartProducts} 
         handleCheckout={handleCheckout}
-        success={success} />
-        
+        success={success} 
+      />
     </Segment>
   );
 }
@@ -67,7 +67,7 @@ function Cart({ products, user }) {
 Cart.getInitialProps = async ctx => {
   const { token } = parseCookies(ctx);
   if (!token) {
-    return { products: [ ] };
+    return { products: [] };
   }
   const url = `${baseUrl}/api/cart`;
   const payload = { headers: { Authorization: token } };

@@ -81,10 +81,8 @@ async function handlePutRequest(req, res) {
   }
 }
 
-// Currently building my delete function for removing items from the cart 
-
 async function handleDeleteRequest(req, res) {
-  const {productId} = req.query
+  const { productId } = req.query
   if (!("authorization" in req.headers)) {
     return res.status(401).send("No authorization token");
   }
@@ -96,7 +94,7 @@ async function handleDeleteRequest(req, res) {
     const cart = await Cart.findOneAndUpdate(
       {user: userId},
       // $pull allows us to pull our products from our array
-      {$pull: {products: { product: productId}}}, 
+      {$pull: {products: { product: productId } } }, 
       // We always want to be getting the updated cart
       { new: true }
       // Now we need to populate or productId

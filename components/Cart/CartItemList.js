@@ -1,22 +1,25 @@
-import {Header, Segment, Button, Icon, Item, Message} from "semantic-ui-react";
-import {useRouter} from 'next/router';
+import { Header, Segment, Button, Icon, Item, Message } from "semantic-ui-react";
+import { useRouter } from 'next/router';
 
-function CartItemList({products, user, handleRemoveFromCart, success}){
+function CartItemList({ products, user, handleRemoveFromCart, success }){
   const router = useRouter()
 
   // How we are displaying our cart items to the user
-  function mapCartToProductsToItems(products){
+  function mapCartProductsToItems(products){
     return products.map(p => ({
       childKey: p.product._id, 
       header: (
-        <Item.Header as="a" onClick={() => router.push(`/product?product?_id=${p.product._id}`)}>
-           {p.product.name}
+        <Item.Header
+          as="a"
+          onClick={() => router.push(`/product?_id=${p.product._id}`)}
+        >
+          {p.product.name}
         </Item.Header>
       ),
       image: p.product.imageUrl, 
       meta: `${p.quantity} x $${p.product.price}`,
-      fluid: true,
-      extra:  (
+      fluid: "true",
+      extra: (
         <Button
           basic
           icon='remove'
@@ -28,7 +31,7 @@ function CartItemList({products, user, handleRemoveFromCart, success}){
   }
 
   // Display upon a successful payment
-  if(success){
+  if (success){
     return(
       <Message 
         success
@@ -59,11 +62,7 @@ function CartItemList({products, user, handleRemoveFromCart, success}){
     );
   } 
 
-  // The grouped display in the middle of the page
-  return (
-    // Divided adds a line below each item
-    <Item.Group divided items={mapCartToProductsToItems(products)} />
-  )
+  return <Item.Group divided items={mapCartProductsToItems(products)} />;
 
 }
 
