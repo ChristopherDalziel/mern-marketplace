@@ -3,6 +3,7 @@ import axios from 'axios';
 import {Header, Checkbox, Table, Icon } from 'semantic-ui-react';
 import baseUrl from '../../utils/baseUrl';
 import cookie from 'js-cookie';
+import formatDate from '../../utils/formatDate';
 
 //  Checking our account permissions client side when we hit out account page
 function AccountPermissions() {
@@ -81,8 +82,8 @@ function UserPermission({user}) {
       </Table.Cell>
       <Table.Cell>{user.name}</Table.Cell>
       <Table.Cell>{user.email}</Table.Cell>
-      <Table.Cell>{user.createdAt}</Table.Cell>
-      <Table.Cell>{user.updatedAt}</Table.Cell>
+      <Table.Cell>{formatDate(user.createdAt)}</Table.Cell>
+      <Table.Cell>{formatDate(user.updatedAt)}</Table.Cell>
       {/* This updates the Role column dynamically */}
       <Table.Cell>{admin ? "admin" : "user"}</Table.Cell>
     </Table.Row>
