@@ -5,7 +5,7 @@ const connection = {}
 async function connectDb(){
   if (connection.isConnected){
     // use existing database connection
-    console.log("Using existing connection...")
+    // console.log("Using existing connection...")
     return;
   }
   // Use new database connection 
@@ -16,7 +16,7 @@ async function connectDb(){
     useUnifiedTopology: true
   })
 
-  console.log("Db Connected")
+  // console.log("Db Connected")
   // How to connect a mongo atlas db to a severless application
   connection.isConnected = db.connections[0].readyState;
 }

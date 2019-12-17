@@ -34,7 +34,7 @@ export default async (req, res) => {
       email,
       password: hash
     }).save()
-    console.log({newUser})
+    // console.log({newUser})
     // 5. Create a cart for new user
     await new Cart({user: newUser._id}).save();
     // 6. Create a token for the new user, a token is a cryptic string thats assosiated with a given user for a certain peroid of time before becoming invalid
