@@ -1,12 +1,12 @@
-import React from 'react';
+import React from "react";
 import { Segment } from "semantic-ui-react";
 import CartItemList from "../components/Cart/CartItemList";
 import CartSummary from "../components/Cart/CartSummary";
 import { parseCookies } from "nookies";
 import axios from "axios";
+import cookie from "js-cookie";
 import baseUrl from "../utils/baseUrl";
-import catchErrors from '../utils/catchErrors';
-import cookie from 'js-cookie';
+import catchErrors from "../utils/catchErrors";
 
 function Cart({ products, user }) {
   // Allowing us to update the 'state' of our cart 

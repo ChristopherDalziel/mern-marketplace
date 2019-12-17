@@ -16,3 +16,4 @@
 
 ### Run localhost
 - npm run dev
+- now --prod
