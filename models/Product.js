@@ -18,10 +18,6 @@ const ProductSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  inventoryQuantity: {
-    type: Number,
-    required: true
-  },
   sku: {
     type: String,
     unique: true,
