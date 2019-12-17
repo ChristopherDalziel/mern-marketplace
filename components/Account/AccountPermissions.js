@@ -49,16 +49,42 @@ function AccountPermissions() {
 
 // Returning the table data
 function UserPermission({user}) {
+  // Setting the state of our users
+  const [admin, setAdmin] = React.useState(user.role === 'admin')
+
+  const isFirstRun = React.useRef(true)
+
+  React.useEffect(() => {
+    
+    if(isFirstRun.current){
+      isFirstRun.current = false;
+      return
+    }
+    updatePermission()
+  }, [admin])
+
+  async function updatePermission(){
+    const url = `${baseUrl}/api/account`
+    const payload = {_id: user._id, role: admin ? "admin" : "user"}
+    await axios.put(url, payload)
+  }
+
+  // If the user was not an admin in their previous state, reverse.
+  function handleChangePermission() {
+    setAdmin (prevState => !prevState)
+  }
+
   return (
     <Table.Row>
       <Table.Cell collapsing>
-        <Checkbox toggle />
+        <Checkbox toggle checked={admin} onChange={handleChangePermission} />
       </Table.Cell>
       <Table.Cell>{user.name}</Table.Cell>
       <Table.Cell>{user.email}</Table.Cell>
       <Table.Cell>{user.createdAt}</Table.Cell>
       <Table.Cell>{user.updatedAt}</Table.Cell>
-      <Table.Cell>{user.role}</Table.Cell>
+      {/* This updates the Role column dynamically */}
+      <Table.Cell>{admin ? "admin" : "user"}</Table.Cell>
     </Table.Row>
   )
 }
