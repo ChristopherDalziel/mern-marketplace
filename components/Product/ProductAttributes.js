@@ -4,12 +4,12 @@ import axios from 'axios';
 import baseUrl from '../../utils/baseUrl';
 import {useRouter} from 'next/router';
 
-function ProductAttributes({description, _id, user}){
-  // React.useState is hiding our delete product by setting it to false until we 'onClick' in the return value
+function ProductAttributes({ description, _id, user }) {
+    // React.useState is hiding our delete product by setting it to false until we 'onClick' in the return value
   const [modal, setModal] = React.useState(false);
   const router = useRouter();
-  const isRoot = user.role === 'root';
-  const isAdmin = user.role === 'admin';
+  const isRoot = user && user.role === "root";
+  const isAdmin = user && user.role === "admin";
   const isRootOrAdmin = isRoot || isAdmin;
 
   // Delete function
