@@ -9,19 +9,19 @@ function AccountPermissions() {
 
   React.useEffect(() => {
     getUsers()
-
   }, [])
 
   async function getUsers(){
     const url = `${baseUrl}/api/users`
     const token = cookie.get('token')
     const payload = {headers: {Authorization: token}}
-    const response = await axios.get(payload, url)
+    const response = await axios.get(url, payload)
+    // Currently not returning in the console
     console.log(response.data)
 
   }
 
-  return <>AccountPermissions </>;
+  return <>AccountPermissions</>;
 }
 
 export default AccountPermissions;

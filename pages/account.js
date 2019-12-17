@@ -5,7 +5,7 @@ import { parseCookies } from 'nookies';
 import baseUrl from '../utils/baseUrl';
 import axios from 'axios';
 
-
+// Displaying our components on the page
 function Account({user, orders}) {
   return <>
       <AccountHeader {...user} />
