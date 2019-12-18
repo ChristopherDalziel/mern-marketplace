@@ -17,3 +17,5 @@
 ### Run localhost
 - npm run dev
 - now --prod
+
+[Deployed](https://the-rock-shop.now.sh/)
