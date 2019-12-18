@@ -5,9 +5,7 @@ import Cart from '../../models/Cart';
 import Order from '../../models/Order';
 import calculateCartTotal from '../../utils/calculateCartTotal';
 
-// Stripe setup
-
-const stripe = Stripe(process.env.STRIPE_SECRET_KEY)
+const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
 
 export default async (req, res) => {
   const {paymentData} = req.body;

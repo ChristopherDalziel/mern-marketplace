@@ -10,7 +10,6 @@ const { ObjectId } = mongoose.Types;
 export default async (req, res) => {
   switch (req.method) {
     case "GET":
-      console.log('hello')
       await handleGetRequest(req, res);
       break;
     case "PUT":
@@ -26,12 +25,11 @@ export default async (req, res) => {
 };
 
 async function handleGetRequest(req, res) {
-  console.log('yo')
   if (!("authorization" in req.headers)) {
     return res.status(401).send("No authorization token");
   }
+
   try {
-    console.log('save me roddy')
     const { userId } = jwt.verify(
       req.headers.authorization,
       process.env.JWT_SECRET
