@@ -69,7 +69,7 @@ function AccountOrders({orders}) {
         </Button>
       </div>
     </Segment>
-    ): (
+    ):(
       <Accordion
         fluid
         styled
