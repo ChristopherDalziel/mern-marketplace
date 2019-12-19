@@ -6,6 +6,20 @@ It wasn't easy, but it was rewarding to get a better understanding of the stack 
 Although the webpage is hosted now, I have continued to run into issues that I don't run into locally, I hope with more experience within the stack I'll continue to be able to develop and improve. <br>
 I think I achieved the purpose of creating this, and it's cool to stand back and see the differences between how this functions verse my [Ruby on Rails](https://github.com/ChristopherDalziel/mineral-exchange-2.0) application. 
 
+# Screenshots
+## Homepage
+![alt text](/static/imgdata/Home.png)
+## Product Item Page
+![alt text](/static/imgdata/Item.png)
+## Cart Page
+![alt text](/static/imgdata/Cart.png)
+## Payment Page
+![alt text](/static/imgdata/Payment.png)
+## Order History Section
+![alt text](/static/imgdata/OrderHistory.png)
+## Root User Options
+![alt text](/static/imgdata/RootUser.png)
+
 ## Stack
 - MongoDB
 - ExpressJS
@@ -20,23 +34,11 @@ I think I achieved the purpose of creating this, and it's cool to stand back and
 - CLOUDINARY (Image Hosting)
 - Stripe (Payment System)
 
-# Homepage
-![alt text](/static/imgdata/Home.png)
-# Product Item Page
-![alt text](/static/imgdata/Item.png)
-# Cart Page
-![alt text](/static/imgdata/Cart.png)
-# Payment Page
-![alt text](/static/imgdata/Payment.png)
-# Order History Section
-![alt text](/static/imgdata/OrderHistory.png)
-# Root User Options
-![alt text](/static/imgdata/RootUser.png)
-
-[Deployed](https://the-rock-shop.now.sh/)
+# Links
+[Deployed](https://the-rock-shop.now.sh/) <br>
 [GitHub](https://github.com/ChristopherDalziel/mern-marketplace)
 
 ##### Run local
-- npm run dev
+`npm run dev`
 #### Push to now producation
-- now --prod
+`now --prod`
