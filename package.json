@@ -29,7 +29,7 @@
     "shortid": "^2.2.15",
     "stripe": "^7.14.0",
     "uuid": "^3.3.3",
-    "validator": "^11.1.0"
+    "validator": "^13.7.0"
   },
   "devDependencies": {},
   "description": "- npm run dev"
